@@ -3,8 +3,13 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
-const run = new AsyncFunction('popclip', 'require', fs.readFileSync(
-  path.join(__dirname, 'SXTDRemote.popclipext/submit.js'), 'utf8'));
+const candidates = [
+  path.join(__dirname, 'SXTDRemote.popclipext/submit.js'),
+  path.join(__dirname, 'source/SaveXTube.popclipext/submit.js'),
+];
+const scriptPath = candidates.find(fs.existsSync);
+if (!scriptPath) throw new Error('PopClip submit.js was not found');
+const run = new AsyncFunction('popclip', 'require', fs.readFileSync(scriptPath, 'utf8'));
 async function execute(options = {}, outcome = { data: { job_id: 'job-123' } }) {
   const calls = [], messages = [];
   const popclip = {
