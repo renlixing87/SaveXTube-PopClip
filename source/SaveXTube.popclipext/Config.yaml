@@ -1,0 +1,30 @@
+#popclip
+name: SaveXTube 下载
+identifier: com.savextube.popclip
+description: Send selected video links to SaveXTube Desktop or Server.
+keywords: SaveXTube video download Desktop Server YouTube Bilibili
+popclip version: 6221
+icon: file:menubar-logo-template.png
+requirements: [url]
+entitlements: [network]
+javaScriptFile: submit.js
+options:
+  - identifier: connectionType
+    type: multiple
+    label: 连接类型
+    values: [desktop, server]
+    valueLabels: [Desktop, Server]
+    defaultValue: desktop
+  - identifier: serverAddress
+    type: string
+    label: 访问地址
+    description: Desktop 本机默认为 http://127.0.0.1:8530；Server 填写网页访问地址，也可包含部署子路径。
+    defaultValue: http://127.0.0.1:8530
+  - identifier: apiKey
+    type: secret
+    keychain: local
+    label: 访问密钥
+    description: Desktop 填写「设置 → 远程控制 → HTTP API」的 API Key；Server 填写访问密钥。
+app:
+  name: SaveXTube
+  link: https://www.savextube.com/
