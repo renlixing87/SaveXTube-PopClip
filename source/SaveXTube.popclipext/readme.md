@@ -15,4 +15,4 @@ The extension sends only the selected URL to the address configured by the user.
 
 ## Changelog
 
-- 1.0: Initial directory submission; supports Desktop and Server connections.
+- 1.1: Initial directory submission; supports Desktop and Server connections.
